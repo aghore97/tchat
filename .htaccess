@@ -1,0 +1,17 @@
+RewriteEngine on
+
+# *** exclude from mod_rewrite
+RewriteRule   ^(css|images|img|js|lib|stock|icons)/   - [L]
+RewriteRule   ^[^\.]+\.[a-z]{2,4}$              - [L]
+
+# redirect for homepage
+RewriteCond %{QUERY_STRING}                     !=""
+RewriteRule   ^$                                /?                                          [R=301,L]
+RewriteRule   ^$                                _index.php?c=home              			    [QSA,L]
+
+RewriteRule   ^account/$                                    _index.php?c=account&s=main              [QSA,L]
+RewriteRule   ^account/info/$                               _index.php?c=account&s=info              [QSA,L]
+RewriteRule   ^account/logout/$                             _index.php?c=account&s=logout            [QSA,L]
+
+RewriteRule   ^account/login/$                              _index.php?c=auth&s=login                [QSA,L]
+RewriteRule   ^account/registration/$                       _index.php?c=auth&s=registration         [QSA,L]
